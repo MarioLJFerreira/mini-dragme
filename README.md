@@ -1,6 +1,6 @@
 # DragMe
 
-![DragMe Logo](https://raw.githubusercontent.com/MarioLJFerreira/mini-dragme/main/logo.svg)
+![DragMe Logo](https://raw.githubusercontent.com/MarioLJFerreira/mini-dragme/main/src/assets/logo.svg)
 
 **DragMe** is a simple, intuitive Kanban board web application designed to help you and your team manage tasks and visualize project workflows with ease. With its powerful drag-and-drop functionality, customizable views, and a clean, modern interface, DragMe makes organization effortless.
 
@@ -65,61 +65,73 @@ npm test
 The project is structured to be modular and scalable, with clear separation of concerns. Below is a detailed breakdown of the main directories and their contents.
 
 ```
-src/
+mini-dragme/
 │
-├── assets/         # Static images, icons, and logos.
-│ ├── logo.svg      # App's logo.
-│ └── placeholder.png # Default image for user avatars or tasks.
+├── index.html              # Main HTML entry point for the Vite application.
+├── package.json            # Project dependencies and scripts configuration.
+├── package-lock.json       # Locked versions of dependencies for consistent installs.
+├── vite.config.js          # Vite build tool configuration.
+├── .gitignore              # Git ignore rules for the project.
+├── eslint.config.js        # ESLint configuration for code quality.
+├── README.md               # Project documentation and setup instructions.
 │
-├── components/     # Reusable UI components.
-│   ├── ui/         # Small, foundational UI elements.
-│   │   ├── Button.jsx  # All button types (primary, secondary, danger).
-│   │   ├── Input.jsx   # Input fields for forms, search, etc.
-│   │   ├── Modal.jsx   # Modal component for creating/editing tasks or projects.
-│   │   ├── Tag.jsx     # Visual component for task tags/categories.
-│   │   └── Avatar.jsx  # User profile image component.
-│   │
-│   ├── layout/     # Structural components for the application's layout.
-│   │   ├── Header.jsx      # Top navigation bar.
-│   │   ├── Sidebar.jsx     # Side navigation for project lists, filters, etc.
-│   │   └── MainContent.jsx # The main container for the board area.
-│   │
-│   └── board/      # Core components for the drag-and-drop board.
-│       ├── Board.jsx         # The main container for the entire board.
-│       ├── BoardColumn.jsx     # Represents a single column/list in the board. This component will contain the Droppable logic.
-│       ├── TaskCard.jsx        # A single task card component. This component will contain the Draggable logic.
-│       ├── AddTaskCard.jsx     # A button/form for adding new tasks to a column.
-│       └── ColumnHeader.jsx    # Component for the column title, settings, and menu.
-│
-├── pages/          # Page-level components that compose the application's views.
-│   ├── Dashboard.jsx   # The main landing page after login.
-│   ├── Login.jsx       # The user login page.
-│   ├── Register.jsx    # The user registration page.
-│   └── ProjectView.jsx # The primary component for a single project board.
-│
-├── hooks/          # Custom React hooks for shared logic.
-│   ├── useAuth.js      # Handles user authentication state and logic.
-│   └── useDarkMode.js  # Manages dark mode state and local storage.
-│
-├── context/        # React Context API for global state management.
-│   ├── AuthContext.jsx     # Manages authentication state across the app.
-│   ├── ThemeContext.jsx    # Manages the light/dark mode theme.
-│   └── BoardContext.jsx    # Manages the state for the current board (tasks, columns, etc.).
-│
-├── lib/            # Utility functions and helper modules.
-│   ├── api.js          # Functions for making API calls to the backend.
-│   └── dndHelpers.js   # Helper functions for the drag-and-drop logic (e.g., reordering arrays).
-│
-├── styles/         # Tailwind CSS Modules for component-specific styling.
-│   ├── buttons.module.css
-│   ├── cards.module.css
-│   ├── forms.module.css
-│   ├── layout.module.css
-│   └── tags.module.css
-│
-├── App.jsx         # The root component that renders the application's pages.
-├── index.jsx       # The entry point for the React application.
-└── tailwind.config.js # Configuration for Tailwind CSS.
+└── src/                    # Source code directory.
+    │
+    ├── assets/             # Static images, icons, and logos.
+    │   └── logo.svg        # App's logo.
+    │
+    ├── components/         # Reusable UI components.
+    │   ├── ui/             # Small, foundational UI elements.
+    │   │   ├── Button.jsx  # All button types (primary, secondary, danger).
+    │   │   ├── Input.jsx   # Input fields for forms, search, etc.
+    │   │   ├── Modal.jsx   # Modal component for creating/editing tasks or projects.
+    │   │   ├── Tag.jsx     # Visual component for task tags/categories.
+    │   │   └── Avatar.jsx  # User profile image component.
+    │   │
+    │   ├── layout/         # Structural components for the application's layout.
+    │   │   ├── Header.jsx      # Top navigation bar.
+    │   │   ├── Sidebar.jsx     # Side navigation for project lists, filters, etc.
+    │   │   └── MainContent.jsx # The main container for the board area.
+    │   │
+    │   └── board/          # Core components for the drag-and-drop board.
+    │       ├── Board.jsx         # The main container for the entire board.
+    │       ├── BoardColumn.jsx     # Represents a single column/list in the board. This component will contain the Droppable logic.
+    │       ├── TaskCard.jsx        # A single task card component. This component will contain the Draggable logic.
+    │       ├── AddTaskCard.jsx     # A button/form for adding new tasks to a column.
+    │       └── ColumnHeader.jsx    # Component for the column title, settings, and menu.
+    │
+    ├── pages/              # Page-level components that compose the application's views.
+    │   ├── Dashboard.jsx   # The main landing page after login.
+    │   ├── Login.jsx       # The user login page.
+    │   ├── Register.jsx    # The user registration page.
+    │   └── ProjectView.jsx # The primary component for a single project board.
+    │
+    ├── hooks/              # Custom React hooks for shared logic.
+    │   ├── useAuth.js      # Handles user authentication state and logic.
+    │   └── useDarkMode.js  # Manages dark mode state and local storage.
+    │
+    ├── context/            # React Context API for global state management.
+    │   ├── AuthContext.jsx     # Manages authentication state across the app.
+    │   ├── ThemeContext.jsx    # Manages the light/dark mode theme.
+    │   └── BoardContext.jsx    # Manages the state for the current board (tasks, columns, etc.).
+    │
+    ├── lib/                # Utility functions and helper modules.
+    │   ├── api.js          # Functions for making API calls to the backend.
+    │   └── dndHelpers.js   # Helper functions for the drag-and-drop logic (e.g., reordering arrays).
+    │
+    ├── styles/             # Tailwind CSS Modules for component-specific styling.
+    │   ├── buttons.module.css
+    │   ├── cards.module.css
+    │   ├── forms.module.css
+    │   ├── layout.module.css
+    │   └── tags.module.css
+    │
+    ├── App.jsx             # The root component that renders the application's pages.
+    ├── App.css             # Main application styles.
+    ├── index.jsx           # The entry point for the React application.
+    ├── index.css           # Global CSS styles and Tailwind imports.
+    ├── main.jsx            # Main entry point that renders the React app.
+    └── tailwind.config.js  # Configuration for Tailwind CSS.
 ```
 
 -----
