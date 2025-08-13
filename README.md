@@ -142,7 +142,7 @@ To contribute to this project, you must first create a new branch for your chang
 1.  Start by ensuring you are on the `main` branch and that it's up to date.
 
     ```sh
-    git checkout -b branch-type/branch-description
+    git checkout main
     git pull origin main
     ```
 
