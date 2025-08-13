@@ -35,7 +35,7 @@ To get a local copy up and running, follow these simple steps.
     ```
 2.  Navigate to the project directory:
     ```sh
-    cd dragme
+    cd mini-dragme
     ```
 3.  Install NPM packages:
     ```sh
