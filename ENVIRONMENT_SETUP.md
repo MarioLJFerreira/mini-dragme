@@ -4,47 +4,55 @@ This project uses environment variables to securely manage API keys and configur
 
 ## 🏠 Local Development
 
-For local development, your Firebase configuration is already set up in `.env.local`:
+### Manual Setup
+
+Create a `.env.local` file in the project root with your Firebase configuration:
 
 ```bash
-# .env.local (already configured)
-VITE_FIREBASE_API_KEY=AIzaSyCalE6UBEP6X3ZX7R19tC5VoKO03wgAoTo
-VITE_FIREBASE_AUTH_DOMAIN=dragme-mini.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=dragme-mini
-VITE_FIREBASE_STORAGE_BUCKET=dragme-mini.firebasestorage.app
-VITE_FIREBASE_MESSAGING_SENDER_ID=188367279980
-VITE_FIREBASE_APP_ID=1:188367279980:web:a554ae85ce559846fac549
-VITE_FIREBASE_MEASUREMENT_ID=G-2XEQ97DMV8
+# .env.local
+VITE_FIREBASE_API_KEY=your_api_key_here
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
+
+### Steps:
+
+1. **Copy the template** from `.env.example` or use the values above
+2. **Create `.env.local`** in your project root
+3. **Paste the configuration** values
+4. **Start development**: `npm run dev`
 
 ## 🚀 Production Deployment (GitHub Actions)
 
-To deploy to production, you need to add these secrets to your GitHub repository:
+For production deployment, add these secrets to your GitHub repository:
 
 ### Step 1: Go to GitHub Secrets
-1. Navigate to: https://github.com/MarioLJFerreira/mini-dragme/settings/secrets/actions
-2. Click "New repository secret"
+Navigate to: https://github.com/MarioLJFerreira/mini-dragme/settings/secrets/actions
 
-### Step 2: Add Each Secret
+### Step 2: Add Repository Secrets
 
-Add these **7 secrets** one by one:
+Click "New repository secret" and add each of these:
 
 | Secret Name | Value |
 |-------------|-------|
-| `VITE_FIREBASE_API_KEY` | `AIzaSyCalE6UBEP6X3ZX7R19tC5VoKO03wgAoTo` |
-| `VITE_FIREBASE_AUTH_DOMAIN` | `dragme-mini.firebaseapp.com` |
-| `VITE_FIREBASE_PROJECT_ID` | `dragme-mini` |
-| `VITE_FIREBASE_STORAGE_BUCKET` | `dragme-mini.firebasestorage.app` |
-| `VITE_FIREBASE_MESSAGING_SENDER_ID` | `188367279980` |
-| `VITE_FIREBASE_APP_ID` | `1:188367279980:web:a554ae85ce559846fac549` |
-| `VITE_FIREBASE_MEASUREMENT_ID` | `G-2XEQ97DMV8` |
+| `VITE_FIREBASE_API_KEY` | `your_api_key_here` |
+| `VITE_FIREBASE_AUTH_DOMAIN` | `your_project.firebaseapp.comm` |
+| `VITE_FIREBASE_PROJECT_ID` | `your_project_id` |
+| `VITE_FIREBASE_STORAGE_BUCKET` | `your_project.firebasestorage.app` |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | `your_sender_id` |
+| `VITE_FIREBASE_APP_ID` | `your_app_id` |
+| `VITE_FIREBASE_MEASUREMENT_ID` | `your_measurement_id` |
 
-### Step 3: Test the Setup
+### Step 3: Verify Setup
 
 1. **Local testing**: Run `npm run dev` - should work with `.env.local`
 2. **Production testing**: Push to main branch - GitHub Actions will use the secrets
 
-## ➕ Adding New API Keys
+## ➕ Adding New Environment Variables
 
 ### For Local Development:
 Add to `.env.local`:
@@ -82,14 +90,18 @@ npm run dev
 # Test build process
 npm run build
 
-# Check if environment variables are loaded
-console.log(import.meta.env.VITE_FIREBASE_API_KEY); // Should show your API key
+# Check if environment variables are loaded (in browser console)
+console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 ```
+
+## 💡 Why VITE_ Prefix?
+
+Vite only exposes environment variables that start with `VITE_` to your client-side code for security reasons. This prevents accidentally exposing sensitive server-side variables to the browser.
 
 ## ✅ Benefits of This Approach
 
-- **Simple**: No external services required
-- **Secure**: Secrets are encrypted in GitHub
-- **Free**: No billing requirements
-- **Standard**: Industry-standard approach
+- **Simple**: No complex setup or external dependencies
+- **Secure**: Secrets are encrypted in GitHub repository secrets
+- **Standard**: Industry-standard approach for environment variables
 - **Scalable**: Easy to add more secrets as needed
+- **Team-friendly**: Clear documentation for all developers
