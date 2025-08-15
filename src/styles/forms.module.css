@@ -17,7 +17,7 @@
 
 /* Popup Card */
 .popupCard {
-  background: white;
+  background: var(--buttonBackground);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -30,7 +30,7 @@
 .popupTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(text);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -51,17 +51,16 @@
 /* Popup Input */
 .popupInput {
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--inputBorder);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.2s ease;
-  background-color: #f9fafb;
+  background-color: var(--inputBackground);
 }
 
 .popupInput:focus {
   outline: none;
   border-color: #3b82f6;
-  background-color: white;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -109,14 +108,14 @@
 .divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--dividerColor);
 }
 
 .divider span {
   padding: 0 1rem;
-  color: #6b7280;
+  color: var(--spanTextColor);
   font-size: 0.875rem;
-  background: white;
+  background: var(--cardSpanBackground);
 }
 
 /* Google Button */
@@ -127,20 +126,13 @@
   gap: 0.75rem;
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
   border-radius: 8px;
-  background-color: white;
-  color: #374151;
+  border-color: var(--buttonBorder);
+  background-color: var(--googleButtonBackground);
+  color: var(--text);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.googleButton:hover {
-  border-color: #d1d5db;
-  background-color: #f9fafb;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .googleButton:focus {
