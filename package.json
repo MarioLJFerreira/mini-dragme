@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-cloud/secret-manager": "^6.1.0",
     "firebase": "^12.1.0",
     "react": "^19.1.1",
     "react-dnd": "^16.0.1",

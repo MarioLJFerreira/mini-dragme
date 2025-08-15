@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "dragme-mini",
   storageBucket: "dragme-mini.firebasestorage.app",
   messagingSenderId: "188367279980",
-  appId: "1:188367279980:web:c7e89f7baddad156fac549",
-  measurementId: "G-V1EWT37PXJ"
+  appId: "1:188367279980:web:a554ae85ce559846fac549",
+  measurementId: "G-2XEQ97DMV8"
 };
 
 // Initialize Firebase
