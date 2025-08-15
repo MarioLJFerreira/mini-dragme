@@ -1,2 +1,38 @@
 /* Layout component styles */
-/* TODO: Add layout and grid styling */ 
+
+/* Header styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    min-height: 60px;
+    box-sizing: border-box;
+}
+
+.headerLogo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.logo {
+    height: 4rem;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .logo {
+        filter: brightness(0) invert(1);
+    }
+}
