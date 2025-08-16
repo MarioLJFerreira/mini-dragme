@@ -1,9 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
+  --text: #1a1a1a;
+  --background: #ffffff;
+  --buttonBackground: #f9f9f9;
+  --buttonBorder: #202020;
+  --inputBackground: #f9f9f9;
+  --inputBorder: #202020;
+  --googleButtonBackground: #f9f9f9;
+  --cardBackground: white;
+  --cardSpanBackground: white;
+  --spanTextColor: #6b7280;
+  --dividerColor: #e5e7eb;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Dark mode styles */
+.dark {
   --text: #f9f9f9;
   --background: #202020;
   --buttonBackground: #1a1a1a;
-  --buttonBorder: #d1d5db;;
+  --buttonBorder: #d1d5db;
   --inputBackground: #1a1a1a;
   --inputBorder: #202020;
   --googleButtonBackground: #1a1a1a;
@@ -11,11 +28,12 @@
   --cardSpanBackground: #1a1a1a;
   --spanTextColor: #f9f9f9;
   --dividerColor: #2a2b2d;
-  font-family: 'Roboto', sans-serif;
 }
-body{
+
+body {
   color: var(--text);
   background-color: var(--background);
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 button {
@@ -27,21 +45,11 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: var(--buttonBackground);
-  border-color: var(--borderColor);
+  border-color: var(--buttonBorder);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --text: #1a1a1a;
-    --buttonBorder: #202020;
-    --background: #ffffff;
-    --buttonBackground: #f9f9f9;
-    --inputBackground: #f9f9f9;
-    --cardSpanBackground: white;
-    --cardBackground: white;
-    --googleButtonBackground: #f9f9f9;
-    --spanTextColor: #6b7280;
-    --dividerColor: #e5e7eb;
-  }
+button:hover {
+  opacity: 0.8;
 }

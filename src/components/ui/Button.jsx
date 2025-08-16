@@ -12,5 +12,11 @@ function SignInButton({ onClick }) {
       <button onClick={onClick}>Sign Up</button>
     )
   }
+
+  function DarkModeButton({ onClick }) {
+    return (
+      <button onClick={onClick}>Dark Mode</button>
+    )
+  }
   
-  export { SignInButton, SignUpButton }
+  export { SignInButton, SignUpButton, DarkModeButton }
