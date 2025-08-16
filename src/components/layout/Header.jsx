@@ -6,6 +6,7 @@ import { doSignOut } from '/src/firebase/auth'
 import { useState } from 'react'
 import styles from '../../styles/layout.module.css'
 import logo from '../../assets/logo.svg'
+import { DarkModeButton } from '../ui/ThemeToggle.jsx'
 
 export default function Header() {
     const [isSignInOpen, setIsSignInOpen] = useState(false)
@@ -30,6 +31,7 @@ export default function Header() {
                 <img src={logo} alt="DragMe Logo" className={styles.logo} />
             </div>
             <div className={styles.headerButtons}>
+                <DarkModeButton />
                 {!userLoggedIn ? (
                     <>
                         <SignInButton onClick={openSignIn} />
