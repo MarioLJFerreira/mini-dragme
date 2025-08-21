@@ -1,2 +1,12 @@
-// ProjectView page - The primary component for a single project board
-// TODO: Implement project view with board and project settings 
+import Board from "/src/components/board/Board.jsx";
+import { BoardProvider } from "/src/context/BoardContext.jsx";
+
+function ProjectView() {
+  return (
+    <BoardProvider>
+      <Board />
+    </BoardProvider>
+  );
+}
+
+export default ProjectView;
