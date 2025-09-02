@@ -145,4 +145,15 @@
 .googleIcon {
   width: 18px;
   height: 18px;
-} 
+}
+
+.inlineInput {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    width: 100%;
+}

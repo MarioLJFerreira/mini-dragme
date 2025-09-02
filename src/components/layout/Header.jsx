@@ -25,11 +25,12 @@ export default function Header() {
             console.error('Logout error:', error)
         }
     }
+
     return (
         <header className={styles.header}>
-            <div className={styles.headerLogo}>
+            <a href="/" className={styles.headerLogo}>
                 <img src={logo} alt="DragMe Logo" className={styles.logo} />
-            </div>
+            </a>
             <div className={styles.headerButtons}>
                 <DarkModeButton />
                 {!userLoggedIn ? (

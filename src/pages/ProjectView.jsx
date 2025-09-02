@@ -1,12 +1,14 @@
 import Board from "/src/components/board/Board.jsx";
-import { BoardProvider } from "/src/context/BoardContext.jsx";
+import { useBoard } from "/src/context/BoardContext.jsx";
 
 function ProjectView() {
-  return (
-    <BoardProvider>
-      <Board />
-    </BoardProvider>
-  );
+  const { loading } = useBoard();
+
+  if (loading) {
+    return <div>Loading board...</div>;
+  }
+
+  return <Board />;
 }
 
 export default ProjectView;
