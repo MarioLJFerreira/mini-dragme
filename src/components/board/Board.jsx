@@ -8,7 +8,14 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 function Board() {
   // Read columns from context (single source of truth)
-  const { columns } = useBoard();
+  const { columns, addColumn } = useBoard();
+
+  const handleAddColumn = () => {
+    const columnName = prompt("Enter column name:");
+    if (columnName) {
+      addColumn(columnName);
+    }
+  };
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -16,6 +23,9 @@ function Board() {
         {columns.map((column) => (
           <BoardColumn key={column.id} column={column} />
         ))}
+        <button className={styles.addColumnButton} onClick={handleAddColumn}>
+          + Add Column
+        </button>
       </div>
     </DndProvider>
   );

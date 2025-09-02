@@ -1,3 +1,4 @@
+import ColumnHeader from "/src/components/board/ColumnHeader.jsx";
 // BoardColumn: shows the column title, its task list, and an add button
 // It also acts as a drop target for task cards using react-dnd
 import TaskCard from "/src/components/board/TaskCard.jsx";
@@ -6,18 +7,11 @@ import styles from "/src/styles/cards.module.css";
 import { useDrop } from "react-dnd";
 import { useBoard } from "/src/context/BoardContext.jsx";
 
-// Tag color presets per column to visually match the reference
-const COLUMN_COLORS = {
-  "To Do": { bg: "#eef2ff", fg: "#3730a3" },
-  "In Progress": { bg: "#fff7ed", fg: "#9a3412" },
-  Done: { bg: "#ecfdf5", fg: "#065f46" },
-};
-
 function BoardColumn({ column }) {
   if (!column) return null;
 
   // Access board actions and current state
-  const { columns, moveTask, toggleColumnLock } = useBoard();
+  const { columns, moveTask } = useBoard();
   // Configure the column as a drop target
   const [{ isOver, canDrop }, dropRef] = useDrop(
     () => ({
@@ -45,32 +39,20 @@ function BoardColumn({ column }) {
     [column.locked, column.id, columns]
   );
 
-  const columnColor = COLUMN_COLORS[column.title] || { bg: "#f3f4f6", fg: "#111827" };
-
   return (
     <div
       className={`${styles.column} ${column.locked ? styles.columnLocked : ""}`}
       data-column-id={column.id}
     >
-      <div className={styles.columnHeader}>
-        <span>{column.title}</span>
-        <button
-          className={styles.lockButton}
-          title={column.locked ? "Unlock column" : "Lock column"}
-          onClick={() => toggleColumnLock(column.id)}
-          aria-pressed={column.locked}
-        >
-          {column.locked ? "🔒" : "🔓"}
-        </button>
-      </div>
+      <ColumnHeader column={column} />
       <div
         ref={dropRef}
         className={styles.columnBody}
-        style={{ outline: isOver && canDrop ? `2px dashed ${columnColor.fg}` : "none" }}
+        style={{ outline: isOver && canDrop ? `2px dashed var(--buttonBorder)` : "none" }}
       >
         {Array.isArray(column.tasks) && column.tasks.length > 0 ? (
           column.tasks.map((task) => (
-            <TaskCard key={task.id} task={task} columnColor={columnColor} />
+            <TaskCard key={task.id} task={task} isLocked={column.locked} />
           ))
         ) : (
           <div className={styles.emptyState}>
