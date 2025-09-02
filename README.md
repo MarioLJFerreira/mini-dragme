@@ -9,12 +9,12 @@
 ## ✨ Features
 
 -   **Drag-and-Drop:** Seamlessly move task cards between columns or reorder them within a column.
--   **Grid & List Views:** Switch between a classic Kanban board (Grid View) and a simplified task list (List View).
--   **Task Cards:** Create and manage individual task cards with titles and tags.
+-   **In-Place Editing:** Edit task titles and descriptions directly on the card.
+-   **Task Cards:** Create and manage individual task cards with titles, descriptions, and tags.
 -   **Tagging System:** Categorize tasks with custom tags for better organization and filtering.
+-   **Column Management:** Add, delete, and lock columns to fit your workflow.
 -   **Dark Mode:** A comfortable viewing experience with a user-friendly dark theme.
--   **Filtering:** Quickly narrow down tasks on your board by filtering with specific tags.
--   **Customizable Boards:** Add new columns to your board to fit your unique workflow.
+-   **Firebase Integration:** Real-time data persistence with Firestore.
 
 ---
 
@@ -74,7 +74,6 @@ The project is structured to be modular and scalable, with clear separation of c
 mini-dragme/
 │
 ├── .env.example            # Environment variables template for development setup.
-├── .env.local              # Local environment variables (not committed to git).
 ├── .firebaserc             # Firebase project configuration.
 ├── .gitignore              # Git ignore rules for the project.
 ├── ENVIRONMENT_SETUP.md    # Guide for setting up environment variables.
@@ -101,8 +100,7 @@ mini-dragme/
 └── src/                    # Source code directory.
     │
     ├── assets/             # Static images, icons, and logos.
-    │   ├── logo.svg        # App's logo.
-    │   └── react.svg       # React logo.
+    │   └── logo.svg        # App's logo.
     │
     ├── components/         # Reusable UI components.
     │   ├── auth/           # Authentication-related components.
@@ -131,11 +129,12 @@ mini-dragme/
     │   ├── Dashboard.jsx   # The main landing page after login.
     │   ├── Login.jsx       # The user login page.
     │   ├── ProjectView.jsx # The primary component for a single project board.
-    │   └── Register.jsx    # The user registration page.
+    │   ├── Register.jsx    # The user registration page.
+    │   └── WelcomePage.jsx # The welcome page for new users.
     │
     ├── styles/             # Tailwind CSS Modules for component-specific styling.
     │   ├── buttons.module.css
-    │   ├── cards.module.css
+    ��   ├── cards.module.css
     │   ├── forms.module.css
     │   ├── layout.module.css
     │   └── tags.module.css
@@ -151,12 +150,12 @@ mini-dragme/
 
 ### Implementation Details:
 
-  - **React DnD (@hello-pangea/dnd):** The core drag-and-drop logic will be implemented with this library. The `Draggable` and `Droppable` components will be primarily placed within `TaskCard.jsx` and `BoardColumn.jsx`, respectively.
-  - **Drag Logic:** Reordering and moving functions will be housed in `lib/dndHelpers.js` for clean separation and reusability.
-  - **Board State:** The state of the board (tasks, columns, etc.) will be managed within a combination of `BoardContext.jsx` and the `pages/ProjectView.jsx` component to ensure a single source of truth.
-  - **Firebase Integration:** Authentication and real-time data are handled through Firebase, with configuration managed via environment variables for security.
-  - **Environment Variables:** All sensitive configuration (API keys, Firebase config) is managed through environment variables with `VITE_` prefix for client-side access.
-  - **CI/CD Pipeline:** Automated deployment to Firebase Hosting via GitHub Actions on every push to main branch and preview deployments for pull requests.
+  - **React DnD (@hello-pangea/dnd):** The core drag-and-drop logic is implemented with this library.
+  - **Firebase Integration:** Authentication and real-time data are handled through Firebase.
+  - **Firestore:** Board data, including tasks and columns, is persisted in Firestore.
+  - **Board State:** The state of the board is managed within `BoardContext.jsx`.
+  - **Environment Variables:** All sensitive configuration is managed through environment variables.
+  - **CI/CD Pipeline:** Automated deployment to Firebase Hosting via GitHub Actions.
 
 -----
 
