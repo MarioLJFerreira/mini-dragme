@@ -3,7 +3,7 @@ import styles from '/src/styles/forms.module.css';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from '../../firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 
-// Authentication forms component - Sign in and sign up popup forms
+// Authentication forms components - Sign in and sign up popup forms
 // TODO: Implement form validation and authentication logic
 
 function SignInForm({ isOpen, onClose }) { 
